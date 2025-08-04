@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image ↔ PDF Converter</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ffdd57;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            background-color: #fff;
+            color: #000;
+        }
+
+        button {
+            background-color: #ffdd57;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffc107;
+        }
+
+        hr {
+            margin: 30px 0;
+            border: 0;
+            border-top: 1px solid #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🖼️ Image to PDF</h2>
+        <form action="/convert-image-to-pdf" method="post" enctype="multipart/form-data">
+            <input type="file" name="images" accept="image/*" multiple required>
+            <input type="text" name="output_name" placeholder="Output PDF filename (no .pdf)" required>
+            <button type="submit">Convert to PDF</button>
+        </form>
+
+        <hr>
+
+        <h2>📄 PDF to Image</h2>
+        <form action="/convert-pdf-to-image" method="post" enctype="multipart/form-data">
+            <input type="file" name="pdf_file" accept="application/pdf" required>
+            <input type="text" name="output_name" placeholder="Output image base name" required>
+            <button type="submit">Convert to Image</button>
+        </form>
+    </div>
+
+</body>
+</html>
